@@ -5,6 +5,9 @@ var STPAUSE=STREAD+1;	//Read is pauseing
 var STCLOSE=STPAUSE+1;	//Port is closed
 var mStatus=STPORT;
 
+
+var baudtable=[1200,2400,4800,9600,19200,38400,57600,74880,115200,230400];
+
 navigator.serial.addEventListener('connect', (e) => {
   // `e.target` に接続する、すなわち利用可能なポートのリストに加えます。
 	console.log("connect");
@@ -74,6 +77,13 @@ window.onload = function() {
 	$('#clear').click(function(){
 		mLog.innerText="";
 	});
+
+	$('#baud').change(function(){
+		mKeepReading=false;
+		pclose(mPort);
+		mKeepReading=true;
+		portopen(mPort);		//Port opens and Read starts
+	});
 }
 
 
@@ -94,16 +104,11 @@ async function writepoart(port)
 //	await writer.close();
 }
 
-async function closereadport()
-{
-	await mReader.releaseLock();
-	await mReader.close();
-	await mPort.close();
-}
-
 async function portopen(port)
 {
-	await port.open({ baudRate:115200 });
+	var v=$('#baud').val();
+	var br=baudtable[v];
+	await port.open({ baudRate:br });
 	mStatus=STOPEN;
 	reread(port);
 }
@@ -122,7 +127,7 @@ async function reread(port)
 				char+=String.fromCharCode(value[i]);
 			mLog.innerText+=char;
  		}
-		await reader.cancel();
+		await reader.releaseLock();
 		mStatus=STPAUSE;
 		break;
 	}
@@ -130,8 +135,11 @@ async function reread(port)
 
 async function pclose(port)
 {
-	mStatus=STCLOSE;
-	const reader = port.readable.getReader();
-	await reader.releaseLock();
-	await port.close();
+	var t=setInterval(function() {
+	    if(mStatus==STPAUSE){
+			mStatus=STCLOSE;
+			port.close();
+	    }
+	}, 100);
+
 }
