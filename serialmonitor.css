@@ -1,0 +1,176 @@
+#sans { color: #222222; font-family:sans-serif ; font-size: 10pt; line-height : 1.5em}
+#mono { color: #222222; font-family:monospace ; font-size: 10pt; line-height : 1.5em}
+
+body{
+	margin-top:
+	margin-right:28px;
+	margin-left	:28px;
+	margin-top	:10px;
+	background-color:#202020;
+	color:#f0f0f0;
+}
+
+/*
+#bkg{
+	position:absolute;
+	margin: 0 auto;
+	top: 0px;
+	left:0px;
+	z-index:1;
+}
+
+#pw1{
+	position:absolute;
+	margin: 0 auto;
+	top: 0px;
+	left 0px;
+	z-index:100;
+}
+*/
+
+#bkg{
+	z-index:1;
+}
+
+#pw1{
+	z-index:2;
+}
+
+#log{
+	margin-top:10px;
+	margin-left:20px;
+	color:#f0f0f0;
+	font-size: 14px;
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+	left 0;
+    margin: auto;
+}
+
+.skip{
+    height: 100vh;
+}
+
+h2{
+	z-index:3;
+    margin-left: 28px;
+}
+
+div{
+	margin-left	:28px;
+}
+
+table{
+	font-size: large;
+	margin-left	:28px;
+
+}
+
+button{
+	z-index:1;
+	width:10%;
+	height:10%;
+	padding:10px;
+	margin-left	:8px;
+	margin-bottom	:10px;
+	font-size: large;
+	background: #cde8fa;
+	border: 1px solid #68779a;
+	border-radius:20px;
+}
+
+#wtxt{
+	width:20%;
+	height:10%;
+	padding:10px;
+	margin-left	:8px;
+	margin-bottom	:10px;
+	font-size: large;
+	background: #cde8fa;
+	border: 1px solid #68779a;
+	border-radius:20px;
+}
+
+.number{
+	z-index:3;
+	width:120px;
+	padding:10px;
+	margin-left	:28px;
+	margin-top	:18px;
+	margin-bottom	:18px;
+	font-size: large;
+/*	background: #cde8fa;
+	border: 1px solid #68779a; */
+	border-radius:20px;
+}
+
+select{
+	z-index:3;
+	width:120px;
+	padding:10px;
+	margin-left	:28px;
+	margin-top	:18px;
+	margin-bottom	:18px;
+	font-size: large;
+/*	background: #cde8fa;
+	border: 1px solid #68779a; */
+	border-radius:20px;
+}
+
+@media screen and (max-width: 1024px) {
+
+	h2{
+		z-index:3;
+		margin-left: 28px;
+		font-size: 52px;
+	}
+
+	.button{
+		z-index:3;
+		width:400px;
+		height:100px;
+		padding:10px;
+		margin-left	:28px;
+		margin-top	:18px;
+		margin-bottom	:18px;
+		font-size: 52px;
+		background: #cde8fa;
+		border: 1px solid #68779a;
+		border-radius:20px;
+	}
+
+	.number{
+		z-index:3;
+		width:400px;
+		height:100px;
+		padding:10px;
+		margin-left	:28px;
+		margin-top	:18px;
+		margin-bottom	:18px;
+		font-size: 52px;
+	/*	background: #cde8fa;
+		border: 1px solid #68779a; */
+		border-radius:20px;
+	}
+
+	select{
+		z-index:3;
+		width:400px;
+		height:100px;
+		padding:10px;
+		margin-left	:28px;
+		margin-top	:18px;
+		margin-bottom	:18px;
+		font-size: 52px;
+	/*	background: #cde8fa;
+		border: 1px solid #68779a; */
+		border-radius:20px;
+	}
+	table{
+		font-size: 48px;
+	}
+}
+
