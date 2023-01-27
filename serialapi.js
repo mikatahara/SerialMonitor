@@ -25,9 +25,13 @@ navigator.serial.getPorts().then((ports) => {
 });
 
 
+let vTEXT=0;
+let vBIN=1;
+
 var mPort=null;
 var mLog=null;
 var mKeepReading = true;
+var mTextBin=vTEXT;
 
 window.onload = function() {
 
@@ -84,6 +88,19 @@ window.onload = function() {
 		mKeepReading=true;
 		portopen(mPort);		//Port opens and Read starts
 	});
+
+	$('#bin').click(function(){
+		mLog.innerText="";
+		if(mTextBin==vBIN){
+			$(this).text("TEXT");
+			mTextBin=vTEXT;
+		} else {
+			$(this).text("BIN");
+			mTextBin=vBIN;
+			mNumBin=0;
+		}
+	});
+
 }
 
 
@@ -122,10 +139,22 @@ async function reread(port)
 		while (mKeepReading) {
 			const { value, done } = await reader.read();
     	 	if (done) break;
-			let char="";
-			for(var i=0; i<value.length; i++)
-				char+=String.fromCharCode(value[i]);
-			mLog.innerText+=char;
+			if(mTextBin=vTEXT){
+				let char="";
+				for(var i=0; i<value.length; i++)
+					char+=String.fromCharCode(value[i]);
+				mLog.innerText+=char;
+			} else {
+				for(var i=0; i<value.length; i++){
+					mLog.innerHTML += value.toString(16);
+					mLog.innerHTML += "&nbsp";
+					mNumBin++;
+				}
+				if(mNumBin==16){
+					mLog.innerHTML += "<br>";
+					mNumBin=0;
+				}
+			}
  		}
 		await reader.releaseLock();
 		mStatus=STPAUSE;
