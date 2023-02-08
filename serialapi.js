@@ -4,7 +4,7 @@ var STREAD=STOPEN+1;	//Read
 var STPAUSE=STREAD+1;	//Read is pauseing	
 var STCLOSE=STPAUSE+1;	//Port is closed
 var mStatus=STPORT;
-
+var mNumBin=0;
 
 var baudtable=[1200,2400,4800,9600,19200,38400,57600,74880,115200,230400];
 
@@ -139,7 +139,7 @@ async function reread(port)
 		while (mKeepReading) {
 			const { value, done } = await reader.read();
     	 	if (done) break;
-			if(mTextBin=vTEXT){
+			if(mTextBin==vTEXT){
 				let char="";
 				for(var i=0; i<value.length; i++)
 					char+=String.fromCharCode(value[i]);
