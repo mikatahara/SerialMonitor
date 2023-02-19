@@ -38,12 +38,14 @@ window.onload = function() {
 	mLog=document.getElementById("log");
 
 	$('#serial_start').click(function() {
+
 		if(mPort!=null){ 
 			mLog.innerText+="Serial Port has already connected!\n";	
 			return;
 		}
 
 		navigator.serial.requestPort().then((port) => {
+			$(this).toggleClass('isActive');
 			console.log("list");
 			// `port` に接続する、すなわち利用可能なポートのリストに加えます。
 			mPort=port;
@@ -75,6 +77,7 @@ window.onload = function() {
 
 	$('#close').click(function(){
 		mKeepReading=false;
+		$('#serial_start').toggleClass('isDeactive');
 		pclose(mPort);
 	});
 

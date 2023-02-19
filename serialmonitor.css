@@ -86,6 +86,16 @@ button:hover {
 	background: #90b0c0;
 }
 
+.isActive{
+	background: #ffb6c1;
+}
+
+.isDeactive{
+	background: #cde8fa;
+}
+
+
+
 #wtxt{
 	width:28%;
 	height:10%;
