@@ -1,6 +1,8 @@
 # SerialMonitor
 Serial Monitor is using Web Serial API
 
+- You can use this program to acsess as below. https://mikatahara.github.io/SerialMonitor/
+
 <img src="https://webmidiaudio.com/jpeg/serialmonitor.jpg" width="640">
 
 This app is for monitoring a COM port via USB and sending text messages to the COM port.
